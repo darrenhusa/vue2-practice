@@ -6,9 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test page</title>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
+    <!-- <script src="js/main.js"></script> -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
     <h1>Hello INAIR!</h1>
+
+    <div id="app">
+      <example-component></example-component>
+      <example-component />
+    </div>
 
     <!-- <figure class="highcharts-figure"> -->
     <h2>Line Chart</h2>
