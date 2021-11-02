@@ -4,9 +4,8 @@
 
 <script>
   import Highcharts from 'highcharts';
-  // var Highcharts = require('highcharts');  
-// Load module after Highcharts is loaded
-// require('highcharts/modules/exporting')(Highcharts);  
+  import Exporting from 'highcharts/modules/exporting';
+  Exporting(Highcharts);
 
   export default {
     name: 'LineChart',
