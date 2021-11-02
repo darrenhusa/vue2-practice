@@ -20,7 +20,13 @@
       <h2>Line Chart</h2>
         <line-chart></line-chart>
         <line-chart></line-chart>
+    
+        <h2>Stacked Column Chart</h2>
+        <stacked-column-chart></stacked-column-chart>
+
     </div>
+
+
 
     <!-- <figure class="highcharts-figure"> -->
         <!-- <line-chart options="title1, data1, y-axis1"></line-chart>  -->
