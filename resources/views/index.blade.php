@@ -19,6 +19,7 @@
     
       <h2>Line Chart</h2>
         <line-chart></line-chart>
+        <line-chart></line-chart>
     </div>
 
     <!-- <figure class="highcharts-figure"> -->

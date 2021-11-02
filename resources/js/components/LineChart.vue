@@ -1,5 +1,5 @@
 <template>
-  <div id="container"></div>
+  <div></div>
 </template>
 
 <script>
@@ -15,13 +15,13 @@
     data() {
       return { 
         // target: 'container',
-        target: undefined,
+        // target: undefined,
       }
     },
 
     mounted() {
       console.log('inside line chart mounted');
-      this.target = Highcharts.chart(this.$el, {
+      Highcharts.chart(this.$el, {
 
     title: {
       text: 'Solar Employment Growth by Sector, 2010-2016'

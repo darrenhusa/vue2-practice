@@ -2102,14 +2102,13 @@ __webpack_require__.r(__webpack_exports__);
   name: 'LineChart',
   props: {},
   data: function data() {
-    return {
-      // target: 'container',
-      target: undefined
+    return {// target: 'container',
+      // target: undefined,
     };
   },
   mounted: function mounted() {
     console.log('inside line chart mounted');
-    this.target = highcharts__WEBPACK_IMPORTED_MODULE_0___default().chart(this.$el, {
+    highcharts__WEBPACK_IMPORTED_MODULE_0___default().chart(this.$el, {
       title: {
         text: 'Solar Employment Growth by Sector, 2010-2016'
       },
@@ -20401,7 +20400,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "container" } })
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true
