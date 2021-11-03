@@ -50,6 +50,13 @@
 
 
       <h2>Line Chart</h2>
+        <!-- see https://laravel.com/docs/8.x/blade 
+            use the laravel blade @json directive instead of json_encode()
+        -->
+        <!-- 
+            https://www.geeksforgeeks.org/php-json_encode-function/
+            The json_encode() function is an inbuilt function in PHP which is used to convert PHP array or object into JSON representation.
+         -->
         <line-chart v-bind:series='@json($series1)'></line-chart>
         <!-- <line-chart></line-chart> -->
     
