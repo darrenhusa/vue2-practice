@@ -17,9 +17,41 @@
       <example-component></example-component>
       <!-- <example-component /> -->
     
+      @php
+        $data1 = [[
+            'label' => 'Installation',
+            'value' => [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]],
+            [
+            'label' => 'Manufacturing',
+            'value' => [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]]
+            ];  
+            
+            /*  {
+            name: 'Sales & Distribution',
+            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+            }, {
+            name: 'Project Development',
+            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+            }, {
+            name: 'Other',
+            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+            } */
+       
+
+        $series1 = [
+            'title' => 'Solar Employment Growth by Sector, 2010-2016',
+            'subtitle' => 'Source: thesolarfoundation.com',
+            'y_axis' => 'Number of Employees',
+
+            'data' => $data1, 
+        ];
+
+      @endphp
+
+
       <h2>Line Chart</h2>
-        <line-chart></line-chart>
-        <line-chart></line-chart>
+        <line-chart v-bind:series='@json($series1)'></line-chart>
+        <!-- <line-chart></line-chart> -->
     
         <h2>Stacked Column Chart</h2>
         <stacked-column-chart></stacked-column-chart>
