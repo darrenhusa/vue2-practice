@@ -2295,30 +2295,39 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    //   console.log("stacked column chart mounted");
-    //   console.log(this.url);
+    var _this = this;
+
+    console.log("stacked column chart 2 mounted"); //   console.log(this.url);
+    //   let self = this;
+
     axios.get(this.url).then(function (response) {
-      // this.results = response.data;
-      console.log(response.data); // console.log(data);
+      _this.results = response.data; // self.results = response.data;
+      // console.log(response.data);
+      // console.log(data);
       // console.log(this.results.title);
-      // const number = this.results.length;
 
-      var number = 2; // console.log(number);
-
-      var seriesTemp = [];
+      var number = _this.results.data.length; // const number = response.data.data.length;
+      // const number = 3;
+      // console.log(number);
+      // let seriesTemp = [];
 
       for (var i = 0; i < number; i++) {
-        seriesTemp.push({
-          name: this.results.data[i].label,
-          data: this.results.data[i].values,
-          color: this.results.data[i].color
+        _this.series.push({
+          name: response.data.data[i].name,
+          data: response.data.data[i].data
         }); // end push
+
       } // end for
+      // console.log(seriesTemp);
+      // this.series = seriesTemp;
+      // self.results = response.data;
+      // this.series = seriesTemp;
 
+    }); // end axios
 
-      this.series = seriesTemp; // console.log(seriesTemp);
-    });
-    Highcharts.chart(this.$el, {
+    console.log('why is this undefined???');
+    console.log(this.results.title);
+    var chartOptions = {
       chart: {
         type: 'column'
       },
@@ -2365,10 +2374,12 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       },
-      series: series
-    });
-  }
-});
+      series: this.series
+    };
+    Highcharts.chart(this.$el, chartOptions); // end chart
+  } // end mounted 
+
+}); // end export default
 
 /***/ }),
 
