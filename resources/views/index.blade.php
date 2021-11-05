@@ -14,7 +14,7 @@
     <h1>Hello INAIR!</h1>
 
     <div id="app">
-      <example-component></example-component>
+      <!-- <example-component></example-component> -->
       <!-- <example-component /> -->
     
       @php
@@ -48,24 +48,14 @@
 
       @endphp
 
-
-      <h2>Line Chart</h2>
-        <!-- see https://laravel.com/docs/8.x/blade 
-            use the laravel blade @json directive instead of json_encode()
-        -->
-        <!-- 
-            https://www.geeksforgeeks.org/php-json_encode-function/
-            The json_encode() function is an inbuilt function in PHP which is used to convert PHP array or object into JSON representation.
-         -->
-        <line-chart v-bind:series='@json($series1)'></line-chart>
+      <!-- <h2>Line Chart</h2> -->
+        <!-- <line-chart v-bind:series='@json($series1)'></line-chart> -->
         <!-- <line-chart></line-chart> -->
     
-        <h2>Stacked Column Chart</h2>
-        <stacked-column-chart></stacked-column-chart>
+        <h2>Figure 04 - Stacked Column Chart</h2>
+        <stacked-column-chart2 url="/api/fig04"></stacked-column-chart2>
 
     </div>
-
-
 
     <!-- <figure class="highcharts-figure"> -->
         <!-- <line-chart options="title1, data1, y-axis1"></line-chart>  -->
