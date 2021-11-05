@@ -3,6 +3,10 @@
 </template>
 
 <script>
+    import Highcharts from 'highcharts';
+    import Exporting from 'highcharts/modules/exporting';
+    Exporting(Highcharts);
+
   export default {
     name: 'StackedColumnChart2',
     props: {

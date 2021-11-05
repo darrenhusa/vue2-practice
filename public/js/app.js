@@ -2190,10 +2190,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! highcharts */ "./node_modules/highcharts/highcharts.js");
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(highcharts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! highcharts/modules/exporting */ "./node_modules/highcharts/modules/exporting.js");
+/* harmony import */ var highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
 //
+
+
+highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1___default()((highcharts__WEBPACK_IMPORTED_MODULE_0___default()));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'StackedColumnChart',
   props: {},
@@ -2202,7 +2209,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log("stacked column chart mounted");
-    Highcharts.chart(this.$el, {
+    highcharts__WEBPACK_IMPORTED_MODULE_0___default().chart(this.$el, {
       chart: {
         type: 'column'
       },
@@ -2222,7 +2229,7 @@ __webpack_require__.r(__webpack_exports__);
           style: {
             fontWeight: 'bold',
             color: // theme
-            Highcharts.defaultOptions.title.style && Highcharts.defaultOptions.title.style.color || 'gray'
+            (highcharts__WEBPACK_IMPORTED_MODULE_0___default().defaultOptions.title.style) && (highcharts__WEBPACK_IMPORTED_MODULE_0___default().defaultOptions.title.style.color) || 'gray'
           }
         }
       },
@@ -2232,7 +2239,7 @@ __webpack_require__.r(__webpack_exports__);
         verticalAlign: 'top',
         y: 25,
         floating: true,
-        backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || 'white',
+        backgroundColor: (highcharts__WEBPACK_IMPORTED_MODULE_0___default().defaultOptions.legend.backgroundColor) || 'white',
         borderColor: '#CCC',
         borderWidth: 1,
         shadow: false
@@ -2276,10 +2283,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! highcharts */ "./node_modules/highcharts/highcharts.js");
+/* harmony import */ var highcharts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(highcharts__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! highcharts/modules/exporting */ "./node_modules/highcharts/modules/exporting.js");
+/* harmony import */ var highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
 //
+
+
+highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1___default()((highcharts__WEBPACK_IMPORTED_MODULE_0___default()));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'StackedColumnChart2',
   props: {
@@ -2347,7 +2361,7 @@ __webpack_require__.r(__webpack_exports__);
           style: {
             fontWeight: 'bold',
             color: // theme
-            Highcharts.defaultOptions.title.style && Highcharts.defaultOptions.title.style.color || 'gray'
+            (highcharts__WEBPACK_IMPORTED_MODULE_0___default().defaultOptions.title.style) && (highcharts__WEBPACK_IMPORTED_MODULE_0___default().defaultOptions.title.style.color) || 'gray'
           }
         }
       },
@@ -2357,7 +2371,7 @@ __webpack_require__.r(__webpack_exports__);
         verticalAlign: 'top',
         y: 25,
         floating: true,
-        backgroundColor: Highcharts.defaultOptions.legend.backgroundColor || 'white',
+        backgroundColor: (highcharts__WEBPACK_IMPORTED_MODULE_0___default().defaultOptions.legend.backgroundColor) || 'white',
         borderColor: '#CCC',
         borderWidth: 1,
         shadow: false
@@ -2376,7 +2390,7 @@ __webpack_require__.r(__webpack_exports__);
       },
       series: this.series
     };
-    Highcharts.chart(this.$el, chartOptions); // end chart
+    highcharts__WEBPACK_IMPORTED_MODULE_0___default().chart(this.$el, chartOptions); // end chart
   } // end mounted 
 
 }); // end export default
