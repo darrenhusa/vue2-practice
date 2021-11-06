@@ -26,17 +26,46 @@
     
     created() {
       console.log("stacked column chart 2 created");
-    //   let self = this;
+    
+    //   axios.get(this.url)
+    //         .then(response => {
+    //             this.results = response.data;
+                
+    //             const number = this.results.data.length;
+
+    //             console.log(number);
+    //             // let seriesTemp = [];
+
+    //             for(let i=0; i<number; i++)
+    //             {
+    //                 // console.log(this.results.data.data[i].name);
+    //                 // console.log(this.results.data.data[i].data);
+
+    //                 this.series.push({
+    //                     name: response.data.data[i].name,
+    //                     data: response.data.data[i].data,
+    //                     // name: this.results.data.data[i].name,
+    //                     // data: this.results.data.data[i].data,
+    //                 }); // end push
+    //             } // end for
+    //         }); //end axios get then
+      
+            // const number = response.data.data.length;
+            // const number = 3;
+     
+    //   this.mapDataForChart();
+
+      let self = this;
 
     //   self.fetchData();
       this.fetchData();
-    //   self.mapDataForChart();    
-    //   this.mapDataForChart();    
+    //   self.mapDataForChart(self);    
+    //   this.mapDataForChart(this);    
     },
 
     mounted() {
       console.log("inside mounted");
-    //   this.mapDataForChart();
+    //   this.mapDataForChart(this);
 
     //   console.log(this.url);
     //   let self = this;
@@ -177,14 +206,36 @@
     }, // end mounted
 
     methods: {
-        fetchData() 
+        async fetchData() 
         {
             // console.log("inside fetchData...");
             // let self = this;
-            axios.get(this.url)
-                .then(response => this.results = response.data);
-            
-            this.mapDataForChart();
+            try {
+              const response = await axios.get(this.url);
+              this.results = response.data;
+  
+            //   const number = this.results.data.length;
+
+              // const number = response.data.data.length;
+            //   const number = 3;
+            //   console.log(number);
+              // let seriesTemp = [];
+
+                // for(let i=0; i<number; i++)
+                // {
+                //     this.series.push({
+                //         name: this.results.data.data[i].name,
+                //         data: this.results.data.data[i].data,
+                //     }); // end push
+                // } // end for
+                
+            }
+            catch(e) {
+                console.log('error!!!!')
+                console.error(e)
+            }
+        
+            // this.mapDataForChart(this);
             
             // axios.get(this.url).then(response => {
                 // console.log('inside axios then...');
@@ -205,9 +256,9 @@
         
         }, // end fetchData
     
-        mapDataForChart() 
+        mapDataForChart(self) 
         {
-            const number = this.results.data.length;
+            const number = self.results.data.length;
             // const number = response.data.data.length;
             // const number = 3;
             console.log(number);
@@ -215,9 +266,9 @@
 
             for(let i=0; i<number; i++)
             {
-                this.series.push({
-                    name: this.results.data.data[i].name,
-                    data: this.results.data.data[i].data,
+                self.series.push({
+                    name: self.results.data.data[i].name,
+                    data: self.results.data.data[i].data,
                 }); // end push
             } // end for
         } // end mapDataForChart
