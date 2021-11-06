@@ -2328,6 +2328,24 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_2___default()((highcharts_
       series: []
     };
   },
+  computed: {
+    mapDataForChart: function mapDataForChart() {
+      var number = this.results.data.length; // const number = response.data.data.length;
+      // const number = 3;
+
+      console.log(number); // let seriesTemp = [];
+
+      for (var i = 0; i < number; i++) {
+        this.series.push({
+          name: this.results.data.data[i].name,
+          data: this.results.data.data[i].data
+        }); // end push
+      } // end for
+
+    } // end mapDataForChart
+
+  },
+  // end computed
   created: function created() {
     console.log("stacked column chart 2 created"); //   axios.get(this.url)
     //         .then(response => {
@@ -2355,6 +2373,8 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_2___default()((highcharts_
 
     this.fetchData(); //   self.mapDataForChart(self);    
     //   this.mapDataForChart(this);    
+
+    this.mapDataForChart();
   },
   mounted: function mounted() {
     console.log("inside mounted"); //   this.mapDataForChart(this);
@@ -2524,22 +2544,22 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_2___default()((highcharts_
           }
         }, _callee, null, [[0, 7]]);
       }))();
-    },
-    // end fetchData
-    mapDataForChart: function mapDataForChart(self) {
-      var number = self.results.data.length; // const number = response.data.data.length;
-      // const number = 3;
-
-      console.log(number); // let seriesTemp = [];
-
-      for (var i = 0; i < number; i++) {
-        self.series.push({
-          name: self.results.data.data[i].name,
-          data: self.results.data.data[i].data
-        }); // end push
-      } // end for
-
-    } // end mapDataForChart
+    } // end fetchData
+    // mapDataForChart(self) 
+    // {
+    //     const number = self.results.data.length;
+    //     // const number = response.data.data.length;
+    //     // const number = 3;
+    //     console.log(number);
+    //     // let seriesTemp = [];
+    //     for(let i=0; i<number; i++)
+    //     {
+    //         self.series.push({
+    //             name: self.results.data.data[i].name,
+    //             data: self.results.data.data[i].data,
+    //         }); // end push
+    //     } // end for
+    // } // end mapDataForChart
 
   } // end methods
 

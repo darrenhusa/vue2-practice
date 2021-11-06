@@ -23,7 +23,26 @@
           series: [],
       }
     },
-    
+
+    computed: {
+        mapDataForChart() 
+        {
+            const number = this.results.data.length;
+            // const number = response.data.data.length;
+            // const number = 3;
+            console.log(number);
+            // let seriesTemp = [];
+
+            for(let i=0; i<number; i++)
+            {
+                this.series.push({
+                    name: this.results.data.data[i].name,
+                    data: this.results.data.data[i].data,
+                }); // end push
+            } // end for
+        } // end mapDataForChart
+    }, // end computed
+
     created() {
       console.log("stacked column chart 2 created");
     
@@ -61,6 +80,7 @@
       this.fetchData();
     //   self.mapDataForChart(self);    
     //   this.mapDataForChart(this);    
+    //   this.mapDataForChart();    
     },
 
     mounted() {
@@ -256,22 +276,22 @@
         
         }, // end fetchData
     
-        mapDataForChart(self) 
-        {
-            const number = self.results.data.length;
-            // const number = response.data.data.length;
-            // const number = 3;
-            console.log(number);
-            // let seriesTemp = [];
+        // mapDataForChart(self) 
+        // {
+        //     const number = self.results.data.length;
+        //     // const number = response.data.data.length;
+        //     // const number = 3;
+        //     console.log(number);
+        //     // let seriesTemp = [];
 
-            for(let i=0; i<number; i++)
-            {
-                self.series.push({
-                    name: self.results.data.data[i].name,
-                    data: self.results.data.data[i].data,
-                }); // end push
-            } // end for
-        } // end mapDataForChart
+        //     for(let i=0; i<number; i++)
+        //     {
+        //         self.series.push({
+        //             name: self.results.data.data[i].name,
+        //             data: self.results.data.data[i].data,
+        //         }); // end push
+        //     } // end for
+        // } // end mapDataForChart
     }, // end methods
  
   } // end export default
