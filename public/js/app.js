@@ -2292,6 +2292,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+ // import func from 'vue-editor-bridge';
 
 highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1___default()((highcharts__WEBPACK_IMPORTED_MODULE_0___default()));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2308,46 +2309,23 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1___default()((highcharts_
       series: []
     };
   },
-  methods: {
-    fetchData: function fetchData() {
-      console.log("inside fetchData...");
-      var self = this;
-      axios.get(this.url).then(function (response) {
-        self.results = response.data; // self.results = response.data;
-        // console.log(response.data);
-        // console.log(data);
-        // console.log(this.results.title);
+  created: function created() {
+    console.log("stacked column chart 2 created"); //   let self = this;
+    //   self.fetchData();
 
-        var number = self.results.data.length; // const number = response.data.data.length;
-        // const number = 3;
-        // console.log(number);
-        // let seriesTemp = [];
-
-        for (var i = 0; i < number; i++) {
-          self.series.push({
-            name: response.data.data[i].name,
-            data: response.data.data[i].data
-          }); // end push
-        } // end for
-        // console.log(seriesTemp);
-        // this.series = seriesTemp;
-        // self.results = response.data;
-        // this.series = seriesTemp;
-
-      }); // end axios
-    } // end fetchData
-
+    this.fetchData(); //   self.mapDataForChart();    
+    //   this.mapDataForChart();    
   },
-  // end methods
   mounted: function mounted() {
-    console.log("stacked column chart 2 mounted"); //   console.log(this.url);
-
-    var self = this;
-    self.fetchData(); //   let self = this;
+    console.log("inside mounted"); //   this.mapDataForChart();
+    //   console.log(this.url);
+    //   let self = this;
+    //   let self = this;
 
     console.log('why is this undefined???');
-    console.log(this.results);
-    console.log(this.results.title);
+    console.log(this.results); // console.log(self.results);
+    // console.log(self.results.title);
+
     var chartOptions = {
       chart: {
         type: 'column'
@@ -2396,7 +2374,8 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1___default()((highcharts_
         }
       },
       series: this.series
-    };
+    }; // test chart
+
     highcharts__WEBPACK_IMPORTED_MODULE_0___default().chart(this.$el, {
       title: {
         text: this.results.title
@@ -2458,7 +2437,48 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_1___default()((highcharts_
         }]
       }
     }); // Highcharts.chart(this.$el, chartOptions); // end chart
-  } // end mounted 
+  },
+  // end mounted
+  methods: {
+    fetchData: function fetchData() {
+      var _this = this;
+
+      // console.log("inside fetchData...");
+      // let self = this;
+      axios.get(this.url).then(function (response) {
+        return _this.results = response.data;
+      });
+      this.mapDataForChart(); // axios.get(this.url).then(response => {
+      // console.log('inside axios then...');
+      // this.results = response.data;
+      // self.results = response.data;
+      // console.log(response.data);
+      // console.log(data);
+      // console.log(this.results.title);
+      // this.series = seriesTemp;
+      // self.results = response.data;
+      // this.series = seriesTemp;
+      // }); // end axios
+      // console.log('inside fecthData outside of axios...');
+      // console.log(this.results);
+    },
+    // end fetchData
+    mapDataForChart: function mapDataForChart() {
+      var number = this.results.data.length; // const number = response.data.data.length;
+      // const number = 3;
+
+      console.log(number); // let seriesTemp = [];
+
+      for (var i = 0; i < number; i++) {
+        this.series.push({
+          name: this.results.data.data[i].name,
+          data: this.results.data.data[i].data
+        }); // end push
+      } // end for
+
+    } // end mapDataForChart
+
+  } // end methods
 
 }); // end export default
 

@@ -5,6 +5,7 @@
 <script>
     import Highcharts from 'highcharts';
     import Exporting from 'highcharts/modules/exporting';
+// import func from 'vue-editor-bridge';
     Exporting(Highcharts);
 
   export default {
@@ -23,49 +24,29 @@
       }
     },
     
-    methods: {
-        fetchData() {
-            console.log("inside fetchData...");
-            let self = this;
-            axios.get(this.url).then(response => {
-                self.results = response.data;
-                // self.results = response.data;
-                // console.log(response.data);
-                // console.log(data);
-                // console.log(this.results.title);
+    created() {
+      console.log("stacked column chart 2 created");
+    //   let self = this;
 
-                const number = self.results.data.length;
-                // const number = response.data.data.length;
-                // const number = 3;
-                // console.log(number);
-                // let seriesTemp = [];
-
-                for(let i=0; i<number; i++){
-                self.series.push({
-                    name: response.data.data[i].name,
-                    data: response.data.data[i].data,
-                }); // end push
-                } // end for
-
-                // console.log(seriesTemp);
-                // this.series = seriesTemp;
-                // self.results = response.data;
-                // this.series = seriesTemp;
-            }); // end axios
-        } // end fetchData
-    }, // end methods
+    //   self.fetchData();
+      this.fetchData();
+    //   self.mapDataForChart();    
+    //   this.mapDataForChart();    
+    },
 
     mounted() {
-      console.log("stacked column chart 2 mounted");
+      console.log("inside mounted");
+    //   this.mapDataForChart();
+
     //   console.log(this.url);
-      let self = this;
-      self.fetchData();
+    //   let self = this;
 
     //   let self = this;
 
     console.log('why is this undefined???');
     console.log(this.results);
-    console.log(this.results.title);
+    // console.log(self.results);
+    // console.log(self.results.title);
 
     const chartOptions = {
         chart: {
@@ -120,78 +101,127 @@
         series: this.series,
     };
 
-Highcharts.chart(this.$el, {
+    // test chart
+    Highcharts.chart(this.$el, {
 
-    title: {
-        text: this.results.title
-    },
-
-    subtitle: {
-        text: 'Source: thesolarfoundation.com'
-    },
-
-    yAxis: {
         title: {
-            text: 'Number of Employees'
-        }
-    },
+            text: this.results.title
+        },
 
-    xAxis: {
-        accessibility: {
-            rangeDescription: 'Range: 2010 to 2017'
-        }
-    },
+        subtitle: {
+            text: 'Source: thesolarfoundation.com'
+        },
 
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'middle'
-    },
-
-    plotOptions: {
-        series: {
-            label: {
-                connectorAllowed: false
-            },
-            pointStart: 2010
-        }
-    },
-
-    series: [{
-        name: 'Installation',
-        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-    }, {
-        name: 'Manufacturing',
-        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-    }, {
-        name: 'Sales & Distribution',
-        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-    }, {
-        name: 'Project Development',
-        data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-    }, {
-        name: 'Other',
-        data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-    }],
-
-    responsive: {
-        rules: [{
-            condition: {
-                maxWidth: 500
-            },
-            chartOptions: {
-                legend: {
-                    layout: 'horizontal',
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }
+        yAxis: {
+            title: {
+                text: 'Number of Employees'
             }
-        }]
-    }
+        },
 
-});
+        xAxis: {
+            accessibility: {
+                rangeDescription: 'Range: 2010 to 2017'
+            }
+        },
+
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+
+        plotOptions: {
+            series: {
+                label: {
+                    connectorAllowed: false
+                },
+                pointStart: 2010
+            }
+        },
+
+        series: [{
+            name: 'Installation',
+            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+        }, {
+            name: 'Manufacturing',
+            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+        }, {
+            name: 'Sales & Distribution',
+            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+        }, {
+            name: 'Project Development',
+            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+        }, {
+            name: 'Other',
+            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+        }],
+
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+
+    });
 
     // Highcharts.chart(this.$el, chartOptions); // end chart
-    } // end mounted 
+    }, // end mounted
+
+    methods: {
+        fetchData() 
+        {
+            // console.log("inside fetchData...");
+            // let self = this;
+            axios.get(this.url)
+                .then(response => this.results = response.data);
+            
+            this.mapDataForChart();
+            
+            // axios.get(this.url).then(response => {
+                // console.log('inside axios then...');
+                
+                // this.results = response.data;
+                // self.results = response.data;
+                // console.log(response.data);
+                // console.log(data);
+                // console.log(this.results.title);
+
+                // this.series = seriesTemp;
+                // self.results = response.data;
+                // this.series = seriesTemp;
+            // }); // end axios
+            
+            // console.log('inside fecthData outside of axios...');
+            // console.log(this.results);
+        
+        }, // end fetchData
+    
+        mapDataForChart() 
+        {
+            const number = this.results.data.length;
+            // const number = response.data.data.length;
+            // const number = 3;
+            console.log(number);
+            // let seriesTemp = [];
+
+            for(let i=0; i<number; i++)
+            {
+                this.series.push({
+                    name: this.results.data.data[i].name,
+                    data: this.results.data.data[i].data,
+                }); // end push
+            } // end for
+        } // end mapDataForChart
+    }, // end methods
+ 
   } // end export default
 </script>
