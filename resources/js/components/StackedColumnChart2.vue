@@ -38,31 +38,56 @@
               const response = await axios.get(this.url);
               this.results = response.data;
   
+            //   this.mapChartData(this);
               const number = response.data.data.length;
 
-                for(let i=0; i<number; i++)
-                {
-                    this.series.push({
-                        name: response.data.data[i].name,
-                        data: response.data.data[i].data,
-                    }); // end push
-                } // end for
+            for(let i=0; i<number; i++)
+            {
+                this.series.push({
+                    name: response.data.data[i].name,
+                    data: response.data.data[i].data,
+                }); // end push
+            } // end for
+              
+              this.setChartOptions(this);
 
-                // set chart options
-                this.chartOptions = {
+              Highcharts.chart(this.$el, this.chartOptions); // end chart
+            }
+            catch(e) {
+                console.log('error!!!!')
+                console.error(e)
+            }
+        
+        }, // end fetchData
+
+        mapChartData(self) {
+            const number = self.results.data.length;
+            // const number = response.data.data.length;
+
+            for(let i=0; i<number; i++)
+            {
+                self.series.push({
+                    name: self.results.data.data[i].name,
+                    data: self.results.data.data[i].data,
+                }); // end push
+            } // end for
+        }, // end mapChartData
+
+        setChartOptions(self) {
+            self.chartOptions = {
                     chart: {
                         type: 'column'
                     },
                     title: {
-                        text: this.results.title
+                        text: self.results.title
                     },
                     xAxis: {
-                        categories: this.results.categories
+                        categories: self.results.categories
                     },
                     yAxis: {
                         min: 0,
                         title: {
-                            text: this.results.y_axis
+                            text: self.results.y_axis
                         },
                         stackLabels: {
                             enabled: true,
@@ -99,17 +124,10 @@
                             }
                         }
                     },
-                    series: this.series,
+                    series: self.series,
                 };
             
-                Highcharts.chart(this.$el, this.chartOptions); // end chart
-            }
-            catch(e) {
-                console.log('error!!!!')
-                console.error(e)
-            }
-        
-        }, // end fetchData
+        }, // end setCartOptions
     
     }, // end methods
  

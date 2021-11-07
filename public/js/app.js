@@ -2349,8 +2349,9 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_2___default()((highcharts_
 
               case 3:
                 response = _context.sent;
-                _this.results = response.data;
-                number = response.data.data.length;
+                _this.results = response.data; //   this.mapChartData(this);
+
+                number = response.data.data.length; // const number = response.data.data.length;
 
                 for (i = 0; i < number; i++) {
                   _this.series.push({
@@ -2359,58 +2360,10 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_2___default()((highcharts_
                   }); // end push
 
                 } // end for
-                // set chart options
 
 
-                _this.chartOptions = {
-                  chart: {
-                    type: 'column'
-                  },
-                  title: {
-                    text: _this.results.title
-                  },
-                  xAxis: {
-                    categories: _this.results.categories
-                  },
-                  yAxis: {
-                    min: 0,
-                    title: {
-                      text: _this.results.y_axis
-                    },
-                    stackLabels: {
-                      enabled: true,
-                      style: {
-                        fontWeight: 'bold',
-                        color: // theme
-                        (highcharts__WEBPACK_IMPORTED_MODULE_1___default().defaultOptions.title.style) && (highcharts__WEBPACK_IMPORTED_MODULE_1___default().defaultOptions.title.style.color) || 'gray'
-                      }
-                    }
-                  },
-                  legend: {
-                    align: 'right',
-                    x: -30,
-                    verticalAlign: 'top',
-                    y: 25,
-                    floating: true,
-                    backgroundColor: (highcharts__WEBPACK_IMPORTED_MODULE_1___default().defaultOptions.legend.backgroundColor) || 'white',
-                    borderColor: '#CCC',
-                    borderWidth: 1,
-                    shadow: false
-                  },
-                  tooltip: {
-                    headerFormat: '<b>{point.x}</b><br/>',
-                    pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
-                  },
-                  plotOptions: {
-                    column: {
-                      stacking: 'normal',
-                      dataLabels: {
-                        enabled: true
-                      }
-                    }
-                  },
-                  series: _this.series
-                };
+                _this.setChartOptions(_this);
+
                 highcharts__WEBPACK_IMPORTED_MODULE_1___default().chart(_this.$el, _this.chartOptions); // end chart
 
                 _context.next = 15;
@@ -2429,7 +2382,71 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_2___default()((highcharts_
           }
         }, _callee, null, [[0, 11]]);
       }))();
-    } // end fetchData
+    },
+    // end fetchData
+    mapChartData: function mapChartData(self) {
+      var number = self.results.data.length; // const number = response.data.data.length;
+
+      for (var i = 0; i < number; i++) {
+        self.series.push({
+          name: self.results.data.data[i].name,
+          data: self.results.data.data[i].data
+        }); // end push
+      } // end for
+
+    },
+    // end mapChartData
+    setChartOptions: function setChartOptions(self) {
+      self.chartOptions = {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: self.results.title
+        },
+        xAxis: {
+          categories: self.results.categories
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: self.results.y_axis
+          },
+          stackLabels: {
+            enabled: true,
+            style: {
+              fontWeight: 'bold',
+              color: // theme
+              (highcharts__WEBPACK_IMPORTED_MODULE_1___default().defaultOptions.title.style) && (highcharts__WEBPACK_IMPORTED_MODULE_1___default().defaultOptions.title.style.color) || 'gray'
+            }
+          }
+        },
+        legend: {
+          align: 'right',
+          x: -30,
+          verticalAlign: 'top',
+          y: 25,
+          floating: true,
+          backgroundColor: (highcharts__WEBPACK_IMPORTED_MODULE_1___default().defaultOptions.legend.backgroundColor) || 'white',
+          borderColor: '#CCC',
+          borderWidth: 1,
+          shadow: false
+        },
+        tooltip: {
+          headerFormat: '<b>{point.x}</b><br/>',
+          pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            dataLabels: {
+              enabled: true
+            }
+          }
+        },
+        series: self.series
+      };
+    } // end setCartOptions
 
   } // end methods
 
