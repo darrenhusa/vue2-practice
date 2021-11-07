@@ -38,17 +38,7 @@
               const response = await axios.get(this.url);
               this.results = response.data;
   
-            //   this.mapChartData(this);
-              const number = response.data.data.length;
-
-            for(let i=0; i<number; i++)
-            {
-                this.series.push({
-                    name: response.data.data[i].name,
-                    data: response.data.data[i].data,
-                }); // end push
-            } // end for
-              
+              this.mapChartData(this);      
               this.setChartOptions(this);
 
               Highcharts.chart(this.$el, this.chartOptions); // end chart
@@ -62,13 +52,13 @@
 
         mapChartData(self) {
             const number = self.results.data.length;
-            // const number = response.data.data.length;
-
+            console.log(number);
+            
             for(let i=0; i<number; i++)
             {
                 self.series.push({
-                    name: self.results.data.data[i].name,
-                    data: self.results.data.data[i].data,
+                    name: self.results.data[i].name,
+                    data: self.results.data[i].data,
                 }); // end push
             } // end for
         }, // end mapChartData

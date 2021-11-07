@@ -2338,7 +2338,7 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_2___default()((highcharts_
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var response, number, i;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2349,48 +2349,40 @@ highcharts_modules_exporting__WEBPACK_IMPORTED_MODULE_2___default()((highcharts_
 
               case 3:
                 response = _context.sent;
-                _this.results = response.data; //   this.mapChartData(this);
+                _this.results = response.data;
 
-                number = response.data.data.length; // const number = response.data.data.length;
-
-                for (i = 0; i < number; i++) {
-                  _this.series.push({
-                    name: response.data.data[i].name,
-                    data: response.data.data[i].data
-                  }); // end push
-
-                } // end for
-
+                _this.mapChartData(_this);
 
                 _this.setChartOptions(_this);
 
                 highcharts__WEBPACK_IMPORTED_MODULE_1___default().chart(_this.$el, _this.chartOptions); // end chart
 
-                _context.next = 15;
+                _context.next = 14;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
                 console.log('error!!!!');
                 console.error(_context.t0);
 
-              case 15:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee, null, [[0, 10]]);
       }))();
     },
     // end fetchData
     mapChartData: function mapChartData(self) {
-      var number = self.results.data.length; // const number = response.data.data.length;
+      var number = self.results.data.length;
+      console.log(number);
 
       for (var i = 0; i < number; i++) {
         self.series.push({
-          name: self.results.data.data[i].name,
-          data: self.results.data.data[i].data
+          name: self.results.data[i].name,
+          data: self.results.data[i].data
         }); // end push
       } // end for
 
