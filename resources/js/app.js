@@ -9,3 +9,9 @@ import Vue from 'vue'
  const app = new Vue({
    el: '#app',
  });
+
+//  function name() {
+//    return 'Here is a name.';
+//  }
+
+ () => 'Here is a name.';
